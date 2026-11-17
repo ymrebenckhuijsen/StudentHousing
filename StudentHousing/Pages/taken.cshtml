@@ -1,19 +1,31 @@
 @page
-@model StudentHousing.Pages.taken
-
+@model StudentHousing.Pages.TakenModel
 @{
-    Layout = null;
+    ViewData["Title"] = "Schoonmaaktaken";
 }
 
-<!DOCTYPE html>
+<h1>Schoonmaaktaken</h1>
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    
-</div>
-</body>
-</html>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Taak</th>
+        <th>Ruimte</th>
+        <th>Verantwoordelijke</th>
+        <th>Deadline</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var taak in Model.Taken)
+    {
+        <tr>
+            <td>@taak.Omschrijving</td>
+            <td>@taak.Ruimte</td>
+            <td>@taak.Verantwoordelijke</td>
+            <td>@taak.Deadline.ToString("d-M-yyyy")</td>
+            <td>@taak.Status</td>
+        </tr>
+    }
+    </tbody>
+</table>
